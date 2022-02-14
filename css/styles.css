@@ -29,10 +29,6 @@ img{
 a{
     text-decoration: none;
 }
-.link{
-transition:color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .caption{
 margin-top: 0;
 margin-bottom: 0;
@@ -150,10 +146,12 @@ border-radius: 2px;
 .item.adres{
     display:flex;
      justify-content: center;
-     align-items: center;  
+     align-items: center; 
 }
 .item.adres > .link{
-    align-items: baseline;
+    align-items: center;
+     transition:color 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+
 }
 
 .adres-list.list{
@@ -209,8 +207,10 @@ line-height: 1.36;
 letter-spacing:0.06em;
 }
 .title-button{
-    
+    padding: 10px 32px;
     border-radius: 4px;
+    border: none;
+
 background-color: var(--accent-color);
 color: #FFFFFF;
 font-weight:700;
@@ -602,7 +602,7 @@ font-size: 16px;
 line-height: 1.62;
 letter-spacing: 0.03em;
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+     color 250ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter-button:hover,
 .filter-button:focus{
@@ -649,11 +649,7 @@ font-size: 16px;
 line-height:1.87;
 letter-spacing: 0.03em;
 }
-/* .examples-box{ 
-    width: 100%;
-    height: 100%;
-    background-color: rgba(33, 150, 243, 0.9);
-}  */
+
 .exemples-thumb{
     position: relative;
     overflow: hidden;
@@ -663,7 +659,8 @@ letter-spacing: 0.03em;
      top: 0;
      left: 0;
      transform: translateY(100%);
-     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+     bascground-color 250ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 width: 370px;
 height: 100%;
@@ -675,19 +672,28 @@ letter-spacing: 0.03em;
 color: #FFFFFF;
 background-color:rgba(33, 150, 243, 0.9);
 }
-.examples-item:hover .examples-thumb-text{
-    transform: translateY(0);
+.exemples-link{
+    display: block;
 }
-.examples-item:hover{
- box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06)
+
+.exemples-link:hover .examples-thumb-text,
+.exemples-link:focus .examples-thumb-text{
+transform: translateY(0);
+}
+.exemples-link:hover{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06)
     , 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
 .backdrop{
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
+    transition: opacity 250ms, visibility 250ms ;
+    
+
 }
 .modal{
     width: 528px;
@@ -698,7 +704,13 @@ border-radius: 4px;
 position: absolute;
 top: 50%;
 left: 50%;
-transform: translate(-50%,-50%);
+transform: translate(-50%, -50%) scale(1);
+transition: 250ms;
+}
+
+.backdrop.is-hidden .modal{
+    transform: scale(0.1);
+    
 }
 .modal-close{
     position: absolute;
